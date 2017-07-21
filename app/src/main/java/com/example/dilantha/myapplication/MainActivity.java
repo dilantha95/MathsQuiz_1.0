@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                             textView3.setText("Wrong");
                     }
                     if (operator.getText().toString() == "-") {
-                        if (Integer.parseInt(num1.getText().toString()) - Integer.parseInt(num2.getText().toString()) == givenAnswer) {
+                        if (Integer.parseInt(num2.getText().toString()) - Integer.parseInt(num1.getText().toString()) == givenAnswer) {
                             textView3.setText("Correct");
                             ++score;
                         }

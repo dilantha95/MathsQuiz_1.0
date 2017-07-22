@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.dilantha.myapplication.MainActivity">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.example.dilantha.myapplication.MainActivity"
+        android:background="@android:color/holo_blue_bright">
 
-    <ToggleButton
-            android:text="ToggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" android:layout_marginBottom="30dp" android:id="@+id/toggleButton"/>
     <TextView
             android:text="10"
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_alignBottom="@+id/textView8"
             android:layout_toRightOf="@+id/textView8" android:layout_toEndOf="@+id/textView8"
-            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:id="@+id/textView9"/>
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:id="@+id/textView9"
+            android:textColor="@color/wallet_bright_foreground_holo_light"/>
     <TextView
             android:text="Score:"
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView6" android:layout_above="@+id/textView8" android:layout_toLeftOf="@+id/textView9"
-            android:layout_toStartOf="@+id/textView9" android:layout_marginBottom="19dp"/>
+            android:layout_toStartOf="@+id/textView9" android:layout_marginBottom="19dp"
+            android:textColor="@color/wallet_bright_foreground_holo_light"/>
     <TextView
             android:text="0"
             android:textSize="15sp"
@@ -37,14 +35,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView7"
             android:layout_alignBaseline="@+id/textView6" android:layout_alignBottom="@+id/textView6"
-            android:layout_alignLeft="@+id/textView9" android:layout_alignStart="@+id/textView9"/>
+            android:layout_alignLeft="@+id/textView9" android:layout_alignStart="@+id/textView9"
+            android:textColor="@color/wallet_bright_foreground_holo_light"/>
     <TextView
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:layout_alignBaseline="@+id/textView4" android:layout_alignBottom="@+id/textView4"
-            android:layout_toLeftOf="@+id/textView7" android:layout_toStartOf="@+id/textView7"/>
+            android:layout_toLeftOf="@+id/textView7" android:layout_toStartOf="@+id/textView7"
+            android:textColor="@android:color/holo_red_dark"/>
     <EditText
             android:layout_width="200px"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             android:ems="10"
             android:id="@+id/editText"
             android:layout_alignBaseline="@+id/textView" android:layout_alignBottom="@+id/textView"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true" android:background="@android:drawable/editbox_background_normal"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,22 +61,24 @@
             android:textSize="20sp"
             android:layout_marginTop="53dp"
             android:layout_below="@+id/textView4" android:layout_toLeftOf="@+id/editText"
-            android:layout_toStartOf="@+id/editText" android:layout_marginRight="16dp" android:layout_marginEnd="16dp"/>
+            android:layout_toStartOf="@+id/editText" android:layout_marginRight="16dp" android:layout_marginEnd="16dp"
+            android:textColor="@color/colorPrimaryDark"/>
     <TextView
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView5"
             android:layout_above="@+id/textView" android:layout_alignLeft="@+id/textView"
             android:layout_alignStart="@+id/textView" android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"/>
+            android:layout_marginStart="32dp" android:textColor="@android:color/holo_red_dark"/>
     <TextView
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView4"
             android:layout_marginTop="97dp"
-            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:textColor="@android:color/holo_red_dark"/>
     <TextView
             android:text="Time:"
             android:textSize="15sp"
@@ -85,7 +87,7 @@
             android:id="@+id/textView8"
             android:layout_marginBottom="32dp"
             android:layout_above="@+id/textView2" android:layout_toRightOf="@+id/editText"
-            android:layout_toEndOf="@+id/editText"/>
+            android:layout_toEndOf="@+id/editText" android:textColor="@color/wallet_bright_foreground_holo_light"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,4 +103,24 @@
             android:layout_alignBaseline="@+id/editText" android:layout_alignBottom="@+id/editText"
             android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
             android:layout_marginRight="18dp" android:layout_marginEnd="18dp"/>
+    <ToggleButton
+            android:text="ToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="47dp" android:id="@+id/toggleButton" android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+    <TextView
+            android:text="High score : "
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10" android:layout_below="@+id/textView3" android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText" android:layout_marginTop="26dp"/>
+    <TextView
+            android:text=""
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignBottom="@+id/textView8"
+            android:layout_alignLeft="@+id/textView" android:layout_alignStart="@+id/textView"
+            android:id="@+id/textView11"/>
 </RelativeLayout>

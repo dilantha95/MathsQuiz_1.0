@@ -23,14 +23,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView3;
     private TextView textView7;
     private EditText editText;
-    private Button button2;
     private Random random;
     private int answer;
     private int score;
     private int total;
+    private double sum;
+    private double highScore;
     private ToggleButton toggleButton;
     private CountDownTimer countDownTimer;
     private TextView time;
+    private TextView highScoreText;
+    private TextView QNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +51,16 @@ public class MainActivity extends AppCompatActivity {
         random = new Random();
         score = 0;
         total = 0;
-
-
-
+        sum = 0;
+        highScoreText = (TextView)findViewById(R.id.textView10);
+        QNo = (TextView)findViewById(R.id.textView11);
+        highScore = 0.0;
 
         toggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (toggleButton.isChecked()) {
+                    QNo.setText("10");
                     reload();
                     countDownTimer = new CountDownTimer(10000, 1000) {
                         @Override
@@ -65,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
+                            QNo.setText(Integer.toString(10 - ++total));
                             textView3.setText("Time out");
-                            textView7.setText(Integer.toString(score) + " / " + ++total);
+                            textView7.setText(Double.toString(sum * score / total));
                             reload();
                             countDownTimer.start();
                         }
@@ -79,9 +85,10 @@ public class MainActivity extends AppCompatActivity {
                     num2.setText("");
                     operator.setText("");
                     editText.setText("");
-                    textView7.setText("0/0");
+                    textView7.setText("0");
                     textView3.setText("Result");
-                    time.setText("10.0");
+                    QNo.setText("");
+                    time.setText("0.0");
                     countDownTimer.cancel();
                 }
             }
@@ -89,7 +96,24 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (toggleButton.isChecked()) {
+                if (total == 9) {
+                    QNo.setText("Game Over");
+                    operator.setText("You score is : " + textView7.getText());
+                    if (Double.parseDouble(textView7.getText().toString()) >= highScore) {
+                        highScore = Double.parseDouble(textView7.getText().toString());
+                        operator.setText("High Score : " + highScore);
+                        highScoreText.setText("High Score : " + highScore);
+                    }
+                    score = 0;
+                    num1.setText("");
+                    num2.setText("");
+                    editText.setText("");
+                    textView7.setText("0");
+                    textView3.setText("");
+                    time.setText("0");
+                    countDownTimer.cancel();
+                }
+                else if (toggleButton.isChecked()) {
                     int givenAnswer;
                     countDownTimer.cancel();
                     try {
@@ -97,40 +121,18 @@ public class MainActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         givenAnswer = 1000;
                     }
-                    if (operator.getText().toString() == "+") {
-                        if (Integer.parseInt(num1.getText().toString()) + Integer.parseInt(num2.getText().toString()) == givenAnswer) {
-                            textView3.setText("Correct");
-                            ++score;
-                        }
-                        else
-                            textView3.setText("Wrong");
+                    if (answer == givenAnswer) {
+                        textView3.setText("Correct");
+                        ++score;
+                        sum = sum + Double.parseDouble(time.getText().toString());
                     }
-                    if (operator.getText().toString() == "-") {
-                        if (Integer.parseInt(num2.getText().toString()) - Integer.parseInt(num1.getText().toString()) == givenAnswer) {
-                            textView3.setText("Correct");
-                            ++score;
-                        }
-                        else
-                            textView3.setText("Wrong");
-                    }
-                    if (operator.getText().toString() == "/") {
-                        if (Integer.parseInt(num1.getText().toString()) / Integer.parseInt(num2.getText().toString()) == givenAnswer) {
-                            textView3.setText("Correct");
-                            ++score;
-                        }
-                        else
-                            textView3.setText("Wrong");
-                    }
-                    if (operator.getText().toString() == "*") {
-                        if (Integer.parseInt(num1.getText().toString()) * Integer.parseInt(num2.getText().toString()) == givenAnswer) {
-                            textView3.setText("Correct");
-                            ++score;
-                        }
-                        else
-                            textView3.setText("Wrong");
-                    }
+                    else
+                        textView3.setText("Wrong");
+
                     editText.setText("");
-                    textView7.setText(Integer.toString(score) + " / " + ++total);
+                    ++total;
+                    textView7.setText(String.format("%.2f", (sum * score / total)));
+                    QNo.setText(Integer.toString(10 - total));
                     reload();
                     countDownTimer.start();
                 }
@@ -157,11 +159,11 @@ public class MainActivity extends AppCompatActivity {
             return "+";
         }
         else if (i == 1){
-            answer = num1 - num2;
+            answer = num2 - num1;
             return "-";
         }
         else if (i == 2){
-            answer = num1 / num2;
+            answer = num1 * num2;
             return "*";
         }
         else{

@@ -34,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView time;
     private TextView highScoreText;
     private TextView QNo;
+    private Button button0;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button button7;
+    private Button button8;
+    private Button button9;
+    private Button buttonClr;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +65,26 @@ public class MainActivity extends AppCompatActivity {
         total = 0;
         sum = 0;
         highScoreText = (TextView)findViewById(R.id.textView10);
-        QNo = (TextView)findViewById(R.id.textView11);
+        QNo = (TextView)findViewById(R.id.textView13);
         highScore = 0.0;
+        button0 = (Button)findViewById(R.id.button0);
+        button1 = (Button)findViewById(R.id.button1);
+        button2 = (Button)findViewById(R.id.button2);
+        button3 = (Button)findViewById(R.id.button3);
+        button4 = (Button)findViewById(R.id.button4);
+        button5 = (Button)findViewById(R.id.button5);
+        button6 = (Button)findViewById(R.id.button6);
+        button7 = (Button)findViewById(R.id.button7);
+        button8 = (Button)findViewById(R.id.button8);
+        button9 = (Button)findViewById(R.id.button9);
+        buttonClr = (Button)findViewById(R.id.buttonClr);
 
         toggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (toggleButton.isChecked()) {
-                    QNo.setText("10");
+                    editText.setText("");
+                    QNo.setText("Question no : 10");
                     reload();
                     countDownTimer = new CountDownTimer(10000, 1000) {
                         @Override
@@ -70,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
-                            QNo.setText(Integer.toString(10 - ++total));
+                            QNo.setText("Question no : " + Integer.toString(10 - ++total));
                             textView3.setText("Time out");
                             textView7.setText(Double.toString(sum * score / total));
                             reload();
@@ -87,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText("");
                     textView7.setText("0");
                     textView3.setText("Result");
-                    QNo.setText("");
+                    QNo.setText("Click START to begin..!");
                     time.setText("0.0");
                     countDownTimer.cancel();
                 }
@@ -98,18 +122,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (total == 9) {
                     QNo.setText("Game Over");
-                    operator.setText("You score is : " + textView7.getText());
+                    textView3.setText("You score is : " + textView7.getText());
                     if (Double.parseDouble(textView7.getText().toString()) >= highScore) {
                         highScore = Double.parseDouble(textView7.getText().toString());
-                        operator.setText("High Score : " + highScore);
-                        highScoreText.setText("High Score : " + highScore);
+                        textView3.setText("High Score : " + highScore);
+                        highScoreText.setText("High Score :  " + highScore);
                     }
                     score = 0;
+                    sum = 0;
                     num1.setText("");
                     num2.setText("");
                     editText.setText("");
-                    textView7.setText("0");
-                    textView3.setText("");
+                    operator.setText("");
                     time.setText("0");
                     countDownTimer.cancel();
                 }
@@ -132,15 +156,90 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText("");
                     ++total;
                     textView7.setText(String.format("%.2f", (sum * score / total)));
-                    QNo.setText(Integer.toString(10 - total));
+                    QNo.setText("Question no : " + Integer.toString(10 - total));
                     reload();
                     countDownTimer.start();
                 }
             }
         });
 
+        button0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "0");
+            }
+        });
 
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "1");
+            }
+        });
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "2");
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "3");
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "4");
+            }
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "5");
+            }
+        });
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "6");
+            }
+        });
+
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "7");
+            }
+        });
+
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "8");
+            }
+        });
+
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setText(editText.getText() + "9");
+            }
+        });
+
+        buttonClr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editText.getText().length() > 0)
+                    editText.setText(editText.getText().toString().substring(0, editText.getText().length() - 1));
+            }
+        });
     }
     private void reload() {
         int number1 = random.nextInt(10) + 1;
